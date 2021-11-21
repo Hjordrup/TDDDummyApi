@@ -41,9 +41,11 @@ describe('Date route', () => {
       .expect('Content-Type', /json/)
       .expect(200)
       .then((response) => {
+        //Make a date a new date to check against
+        const date = new Date().toISOString().slice(0, 10);
         expect(response.body).toEqual(
           expect.objectContaining({
-            date: expect.any(String),
+            date: date,
           })
         );
       });
